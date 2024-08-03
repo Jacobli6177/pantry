@@ -74,6 +74,10 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
       gap={2}
+      sx={{
+        backgroundColor: '#f5f5f5',
+        padding: 4,
+      }}
     >
       <Modal open={open} onClose={handleClose}>
         <Box
@@ -115,53 +119,60 @@ export default function Home() {
           </Stack>
         </Box>
       </Modal>
-      <Button
-        variant="contained"
-        onClick={handleOpen}
-      >
-        Add New Item
-      </Button>
-      <TextField
-        variant="outlined"
-        fullWidth
-        placeholder="Search for your item"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <Box border="1px solid #333">
+      <Box display="flex" width="800px" justifyContent="space-between" mb={3}>
+        <Button
+          variant="contained"
+          onClick={handleOpen}
+        >
+          Add New Item
+        </Button>
+        <TextField
+          variant="outlined"
+          fullWidth
+          placeholder="Search for your item"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          sx={{ marginLeft: 2 }}
+        />
+      </Box>
+      <Box border="1px solid #333" width="800px" borderRadius={2} bgcolor="white" boxShadow={2}>
         <Box
-          width="800px"
-          height="100px"
+          width="100%"
+          height="60px"
           bgcolor="#ADD8E6"
           display="flex"
           alignContent="center"
           justifyContent="center"
+          borderTopLeftRadius={2}
+          borderTopRightRadius={2}
         >
-          <Typography variant="h2" color="#333">
-            Inventory Item
+          <Typography variant="h4" color="#333" display="flex" alignItems="center">
+            Inventory Items
           </Typography>
         </Box>
-        <Stack width="800px" height="300px" spacing={2} overflow="auto">
+        <Stack width="100%" height="300px" spacing={2} overflow="auto" padding={2}>
           {filteredInventory.map(({ name, quantity }) => (
             <Box
               key={name}
               width="100%"
-              minHeight="150px"
+              minHeight="80px"
               display="flex"
               alignItems="center"
               justifyContent="space-between"
               bgcolor='#f0f0f0'
-              padding={5}
+              padding={2}
+              borderRadius={1}
+              boxShadow={1}
             >
               <Typography
-                variant="h3"
+                variant="h5"
                 color="#333"
                 textAlign="center"
               >
                 {name.charAt(0).toUpperCase() + name.slice(1)}
               </Typography>
               <Typography
-                variant="h3"
+                variant="h5"
                 color="#333"
                 textAlign="center"
               >
